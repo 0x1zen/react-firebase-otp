@@ -30,7 +30,6 @@ const App = () => {
         // user in with confirmationResult.confirm(code).
         window.confirmationResult = confirmationResult;
       }).catch((error) => {
-        // Error; SMS not sent
         console.log(error);
       });
   }
@@ -40,17 +39,15 @@ const App = () => {
     setOtp(otp);
 
     if (otp.length === 6) {
-      // verifu otp
+
       let confirmationResult = window.confirmationResult;
       confirmationResult.confirm(otp).then((result) => {
-        // User signed in successfully.
+
         let user = result.user;
         console.log(user);
         alert('User signed in successfully');
-        // ...
+
       }).catch((error) => {
-        // User couldn't sign in (bad verification code?)
-        // ...
         alert('User couldn\'t sign in (bad verification code?)');
       });
     }
